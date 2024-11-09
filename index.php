@@ -62,6 +62,7 @@ if (($csvFile = fopen($csvFilePath, "r")) !== FALSE) {
             max-width: 500px;
             margin: 20px auto;
         }
+        
         h1, h2 {
             color: #ffffff;
         }
@@ -130,6 +131,15 @@ if (($csvFile = fopen($csvFilePath, "r")) !== FALSE) {
             $basePrice = 1.00;
             $distanceFactor = 0.5;
             $price = $basePrice + (strlen($destination) * $distanceFactor);
+            if ($price > 20) {
+                $price = $price/3;
+            }
+            if ($price > 10) {
+                $price = $price/2;
+            }
+            if ($price > 6) {
+                $price = $price/1.5;
+            }
             return number_format($price, 2);
         }
 
